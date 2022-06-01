@@ -1,0 +1,225 @@
+2.1
+
+Console.WriteLine("введите а");
+int a = int.Parse(Console.ReadLine());
+int V = a * a * a;
+int S = 4 * a * a;
+Console.WriteLine($"объем равен {V} + площадь равна {S}");
+
+2.2
+
+Console.WriteLine("введите х");
+double x = double.Parse(Console.ReadLine());
+Console.WriteLine("введите у");
+double y = double.Parse(Console.ReadLine());
+if (x < y)
+{
+    x = (x + y) / 2;
+    y = 2 * x * y;
+}
+else
+{
+    y = (x + y) / 2;
+    x = 2 * x * y;
+}
+Console.WriteLine($"х = {x}, y = {y}");
+
+2.3
+
+int N = int.Parse(Console.ReadLine());
+int[] a = new int[N];
+int num = 0;
+Random rand = new Random();
+for (int i = 0; i < N; i++)
+{
+    int b = rand.Next();
+    a[i] = b;
+}
+for (int i = 0; i < a.Length; i++)
+{
+    if a[i] % 3 == 0 && a[i] % 7 != 0)
+    {
+        num++;
+    }
+}
+Console.WriteLine(num);
+
+2.4
+
+int n = int.Parse(Console.ReadLine());
+string len = n.ToString();
+int a = 0;
+int cnt1 = 0;
+int cnt2 = 0;
+for (int i = 0; i < len.Length; i++)
+{
+    a = n % 10;
+    n = n / 10;
+    if (a % 2 == 0)
+    {
+        cnt2++;
+    }
+    else
+    {
+        cnt1++;
+    }
+}
+Console.WriteLine(cnt1 + " " + cnt2);
+
+2.5
+
+double n = double.Parse(Console.ReadLine());
+double s = 0;
+double cnt = 0;
+double ans = 0;
+while (n > 0)
+{
+    s = s + n;
+    cnt = cnt + 1;
+    n = double.Parse(Console.ReadLine());
+}
+ans = s / cnt;
+Console.WriteLine(ans);
+
+2.6
+
+int ans = 0;
+for (int i = 1; i < 50; i++)
+{
+    if (i % 2 != 0)
+    {
+        ans = ans + 1;
+    }
+}
+Console.WriteLine(ans);
+
+
+
+
+
+3.1
+
+int n = int.Parse(Console.ReadLine());
+DateTime date1 = new DateTime(n, 1, 31);
+DateTime date2 = new DateTime(n, 2, 28);
+DateTime date3 = new DateTime(n, 3, 31);
+DateTime date4 = new DateTime(n, 4, 30);
+DateTime date5 = new DateTime(n, 5, 31);
+DateTime date6 = new DateTime(n, 6, 30);
+DateTime date7 = new DateTime(n, 7, 31);
+DateTime date8 = new DateTime(n, 8, 31);
+DateTime date9 = new DateTime(n, 9, 30);
+DateTime date10 = new DateTime(n, 10, 31);
+DateTime date11 = new DateTime(n, 11, 30);
+DateTime date12 = new DateTime(n, 12, 31);
+
+Console.WriteLine(Thursday(date1));
+Console.WriteLine(Thursday(date2));
+Console.WriteLine(Thursday(date3));
+Console.WriteLine(Thursday(date4));
+Console.WriteLine(Thursday(date5));
+Console.WriteLine(Thursday(date6));
+Console.WriteLine(Thursday(date7));
+Console.WriteLine(Thursday(date8));
+Console.WriteLine(Thursday(date9));
+Console.WriteLine(Thursday(date10));
+Console.WriteLine(Thursday(date11));
+Console.WriteLine(Thursday(date12));
+
+static DateTime Thursday(DateTime data)
+{
+    while (data.DayOfWeek != DayOfWeek.Thursday)
+    {
+        data = data.AddDays(-1);
+    }
+    return data;
+}
+
+3.2 
+
+double S = double.Parse(Console.ReadLine());
+for (int i = 1; i < 999; i++)
+{
+    for (int j = 1; j < 999; j++)
+    {
+        double S2 = (i * j) / 2;
+        double q = Math.Sqrt((i*i) + (j*j));
+        if (q == Math.Truncate(q) && (S2 < S))
+        {
+            Console.WriteLine(i + " " + j + " " + q + " " + S2);
+        }
+    }
+}
+
+3.3
+
+int n = int.Parse(Console.ReadLine());
+int k = int.Parse(Console.ReadLine());
+Random Random = new Random();
+int x = Random.Next(1, n);
+for (int i = 0; i < k+1; i++)
+{
+    int y = int.Parse(Console.ReadLine());
+    if (i == k)
+    {
+        Console.WriteLine("Попытки закончились");
+        break;
+    }
+    if (y == x)
+    {
+        Console.WriteLine("Вы угадали");
+        break;
+    }
+    else if (y < x)
+    {
+        Console.WriteLine("Больше");
+    }
+    else if (y > x)
+    {
+        Console.WriteLine("Меньше");
+    }
+}
+
+3.4
+
+using System;
+namespace recru1ttt
+{
+    class Program
+    {
+        public int rand(int a, int b)
+        {
+            Random rand = new Random();
+            return rand.Next(a, b + 1);
+        }
+        static void Main(string[] args)
+        {
+            int a = int.Parse(Console.ReadLine());
+            int b = int.Parse(Console.ReadLine());
+            Program randomizer = new Program();
+            for (int i = 0; i < 100; i++)
+            {
+                Console.Write(randomizer.rand(a, b));
+            }
+        }
+
+    }
+}
+
+3.5 
+
+int n = int.Parse(Console.ReadLine());
+int[] massiv = new int[n];
+for (int i = 0; i < n; i++)
+{
+    massiv[i] = int.Parse(Console.ReadLine());
+}
+var rand = new Random();
+for (int j = n - 1; j > 0; j--)
+{
+    int a = rand.Next(j);
+    var b = massiv[j];
+    massiv[j] = massiv[a];
+    massiv[a] = b;
+}
+Console.WriteLine(string.Join(",", massiv));
